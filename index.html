@@ -49,7 +49,8 @@
     .y(function(d) { return y(d["Rating"]); })
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
-    .selectAll('path').datum(seas).enter().append("path")
+    .selectAll('path').data(seas).enter().append("path")
+    .datum(seas)
     .attr("class", "line") 
     .attr("d", line);
     
