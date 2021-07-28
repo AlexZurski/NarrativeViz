@@ -11,9 +11,9 @@
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
-    var x = d3.scale().domain([1, 683]).range([0, 900]);
+    var x = d3.scaleLinear().domain([1, 683]).range([0, 900]);
     var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s")); 
-    var y = d3.scale().domain([0, 10]).range([400, 0]); 
+    var y = d3.scaleLinear().domain([0, 10]).range([400, 0]); 
     var yaxis = d3.axisLeft(y).tickValues([2, 4, 6, 8, 10]).tickFormat(d3.format("~s")); 
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
