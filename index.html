@@ -16,7 +16,7 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
      
-    var x2 = d3.scaleLinear().domain([0, 31]).range([0, 1400]);
+    var x2 = d3.scaleLinear().domain([0.5, 31]).range([0, 1400]);
     var xaxis2 = d3.axisBottom(x2).tickValues([1, 5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
   
     var y = d3.scaleLinear().domain([4, 10]).range([600, 0]); 
