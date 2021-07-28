@@ -8,12 +8,15 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </svg>
 <script>
    
-  var epis;
    
   async function init() {
-    epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
+    doittryit();
+  };
+   
+  function doittryit() {
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
      
@@ -33,9 +36,9 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis2);
-  };
+  }
    
-  console.log(epis);
+   
    
  </script>
  </body>
