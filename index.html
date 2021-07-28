@@ -46,7 +46,7 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
     .x(d => x2(seas(d.Season)))
     .y(d => y(seas(d.Rating)))
 
-const path = grp
+const path = select('svg')
   .append("path")
   .attr("transform", `translate(50,0)`)
   .datum(seas)
