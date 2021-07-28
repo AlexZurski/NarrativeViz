@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+
 <style> circle {fill: lightblue; stroke: black;} 
 line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </style>
+
+<button onclick="full()"> See all Episodes
+</button>
+
 <body onload='init()'>
 <svg width=1500 height=700>
 </svg>
 <script>
    
    
-  async function init() {
-    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+  function init() {
      
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
@@ -29,10 +33,16 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
     full();
   };
    
+  async function step1() {
+   const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+     
+  }
+   
   async function full() {
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
      
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
+    var y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
      
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
