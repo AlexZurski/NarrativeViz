@@ -32,6 +32,8 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
   async function full() {
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
      
+    var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
+     
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
        .attr("cx", function(d) { return x(d["Episode"]); })
