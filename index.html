@@ -48,12 +48,12 @@
     .x(function(d) { return x2(d["Season"]); })
     .y(function(d) { return y(d["Rating"]); })
      
-   svg.append("path")
+   d3.select('svg').append("path")
     .datum(seas)
     .attr("class", "line") // Assign a class for styling 
     .attr("d", line);
     
-   svg.selectAll(".dot")
+   d3.select('svg').selectAll(".dot")
     .data(seas)
     .enter().append("circle") // Uses the enter().append() method
     .attr("class", "dot") // Assign a class for styling
