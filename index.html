@@ -11,11 +11,10 @@
 <body onload='init()'> 
  <script>
    
-   var epis, seas;
    
   async function init() {
-    epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
-    seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
   };
 
   console.log(epis)
