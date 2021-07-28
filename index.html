@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <body> 
- <div id="my_dataviz"></div>
- 
- let margin = { top: 10, right: 30, bottom: 50, left: 60 },
- width = 460 - margin.left - margin.right,
- height = 400 - margin.top - margin.bottom;
- 
- let svg = d3.select("#my_dataviz")
-   .append("svg")
-   .attr("width", width + margin.left + margin.right)
-   .attr("height", height + margin.top + margin.bottom)
-   .append("g")
-   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
- 
+ <div id="my_dataviz"></div> 
  <script>
   
-  var episodes = d3.csv(https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv)
-  var seasons = d3.csv(https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv)
+  var episodes = d3.csv(https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv);
+  var seasons = d3.csv(https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv);
   
   
   
