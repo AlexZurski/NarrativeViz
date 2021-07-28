@@ -10,7 +10,6 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
    
    
   async function init() {
-    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
@@ -32,9 +31,19 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis2);
+     
+    full();
   };
    
-   
+  async function full() {
+    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+     
+    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
+       .selectAll('circle').data(epis).enter().append('circle')
+       .attr("cx", function(d) { return x(d["Episode"]); })
+       .attr("cy", function(d) { return y(d["Rating"]); })
+       .attr("r", function(d) { return 2; });
+  }
    
  </script>
  </body>
