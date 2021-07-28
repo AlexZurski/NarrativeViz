@@ -8,6 +8,9 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
 <button onclick="full()"> See all Episodes
 </button>
 
+<button onclick="step1()"> See Timeline
+</button>
+
 <body onload='init()'>
 <svg width=1500 height=700>
 </svg>
@@ -16,14 +19,14 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
    
   function init() {
      
-    var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
-    var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
+    const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
+    const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
      
-    var x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-    var xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
+    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
+    const xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
   
-    var y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
-    var yaxis = d3.axisLeft(y).tickValues([4, 6, 8, 10]).tickFormat(d3.format("~s"));
+    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+    const yaxis = d3.axisLeft(y).tickValues([4, 6, 8, 10]).tickFormat(d3.format("~s"));
      
     d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 50 + ")");
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
@@ -33,15 +36,52 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
   };
    
   async function step1() {
+     
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+     
+   const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
+   const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+   
+   const line = d3.line()
+    .x(d => seas(d.Season))
+    .y(d => seas(d.Rating))
+   
+   console.log(line)
+
+// Add path
+/*const path = grp
+  .append("path")
+  .attr("transform", `translate(${margin.left},0)`)
+  .datum(data)
+  .attr("fill", "none")
+  .attr("stroke", "steelblue")
+  .attr("stroke-linejoin", "round")
+  .attr("stroke-linecap", "round")
+  .attr("stroke-width", 1.5)
+  .attr("d", line);
+
+const pathLength = path.node().getTotalLength();
+// D3 provides lots of transition options, have a play around here:
+// https://github.com/d3/d3-transition
+const transitionPath = d3
+  .transition()
+  .ease(d3.easeSin)
+  .duration(2500);
+
+path
+  .attr("stroke-dashoffset", pathLength)
+  .attr("stroke-dasharray", pathLength)
+  .transition(transitionPath)
+  .attr("stroke-dashoffset", 0);
+*/
      
   }
    
   async function full() {
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
      
-    var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
-    var y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+    const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
+    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
      
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
