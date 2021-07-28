@@ -8,28 +8,29 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </svg>
 <script>
    
+   const epis;
    
   async function init() {
-    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+    epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
     var x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
-    var xaxis = d3.axisBottom(x).tickValues([6, 12, 100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
+    var xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
      
     var x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-    var xaxis2 = d3.axisBottom(x2).tickValues([1, 5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
+    var xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
   
-    var y = d3.scaleLinear().domain([4, 10]).range([600, 0]); 
-    var yaxis = d3.axisLeft(y).tickValues([4, 6, 8, 10]).tickFormat(d3.format("~s")); 
+    var y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+    var yaxis = d3.axisLeft(y).tickValues([4, 6, 8, 10]).tickFormat(d3.format("~s"));
      
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
        .attr("cx", function(d) { return x(d["Episode"]); })
        .attr("cy", function(d) { return y(d["Rating"]); })
-       .attr("r", function(d) { return 2; })
+       .attr("r", function(d) { return 2; });
      
-    d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 50 + ")")
-    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis); 
+    d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 50 + ")");
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 675 + ")").call(xaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 625 + ")").call(xaxis2);
   };
