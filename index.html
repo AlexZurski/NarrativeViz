@@ -39,10 +39,7 @@
    
   async function step1() {
      
-   const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv", function(csv) {
-      csv = csv.filter(function(row) {
-         return row["Season"] == '1'});
-   });
+   const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
@@ -54,8 +51,16 @@
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll('path').data(seas).enter().append("path")
     .datum(seas)
+    .filter(function(d, i) { return i == 1 })
     .attr("class", "line") 
     .attr("d", line);
+     
+    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
+    .selectAll('path').data(seas).enter().append("path")
+    .filter(function(d, i) { return i == 2 })
+    .datum(seas)
+    .attr("class", "line") 
+    .attr("d", line); 
     
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll(".dot")
