@@ -10,14 +10,15 @@
 
 <body onload='init()'> 
  <script>
+   
+   var epis, seas;
+   
   async function init() {
-  var epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv")
-  var seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv")
-  }
-  
+    epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+    seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+  };
+
   console.log(epis)
-  console.log(seas)
-  
   
   
   
