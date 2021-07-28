@@ -43,16 +43,13 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
    
    const line = d3.line()
-    .x(d => seas(d.Season))
-    .y(d => seas(d.Rating))
-   
-   console.log(line)
+    .x(d => x2(seas(d.Season)))
+    .y(d => y(seas(d.Rating)))
 
-// Add path
-/*const path = grp
+const path = grp
   .append("path")
-  .attr("transform", `translate(${margin.left},0)`)
-  .datum(data)
+  .attr("transform", `translate(50,0)`)
+  .datum(seas)
   .attr("fill", "none")
   .attr("stroke", "steelblue")
   .attr("stroke-linejoin", "round")
@@ -61,8 +58,7 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
   .attr("d", line);
 
 const pathLength = path.node().getTotalLength();
-// D3 provides lots of transition options, have a play around here:
-// https://github.com/d3/d3-transition
+
 const transitionPath = d3
   .transition()
   .ease(d3.easeSin)
@@ -73,7 +69,6 @@ path
   .attr("stroke-dasharray", pathLength)
   .transition(transitionPath)
   .attr("stroke-dashoffset", 0);
-*/
      
   }
    
