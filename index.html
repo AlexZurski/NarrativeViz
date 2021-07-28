@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 
-<style> circle {fill: lightblue; stroke: black;} 
-line {fill: none; stroke: steelblue; stroke-width: 2px;}
+<style> 
+.circle {fill: lightblue; stroke: black;}
+.dot {fill: lightblue; stroke: black;}
+.line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </style>
 
 <button onclick="full()"> See all Episodes
@@ -42,34 +44,22 @@ line {fill: none; stroke: steelblue; stroke-width: 2px;}
    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
    
-   const line = d3.line()
-    .x(d => x2(seas(d.Season)))
-    .y(d => y(seas(d.Rating)))
-
-const path = d3.select('svg')
-  .append("path")
-  .attr("transform", `translate(50,0)`)
-  .data(seas)
-  .attr("fill", "none")
-  .attr("stroke", "steelblue")
-  .attr("stroke-linejoin", "round")
-  .attr("stroke-linecap", "round")
-  .attr("stroke-width", 1.5)
-  .attr("d", line);
-
-const pathLength = path.node().getTotalLength();
-
-const transitionPath = d3
-  .transition()
-  .ease(d3.easeSin)
-  .duration(2500);
-
-path
-  .attr("stroke-dashoffset", pathLength)
-  .attr("stroke-dasharray", pathLength)
-  .transition(transitionPath)
-  .attr("stroke-dashoffset", 0);
+   var line = d3.line()
+    .x(function(d) { return x2(d["Season"]); })
+    .y(function(d) { return y(d["Rating"]); })
      
+   svg.append("path")
+    .datum(seas)
+    .attr("class", "line") // Assign a class for styling 
+    .attr("d", line);
+    
+   svg.selectAll(".dot")
+    .data(seas)
+    .enter().append("circle") // Uses the enter().append() method
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function(d) { return x2(d["Season"]) })
+    .attr("cy", function(d) { return y(d["Rating"]) })
+    .attr("r", 5)
   }
    
   async function full() {
