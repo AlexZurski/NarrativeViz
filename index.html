@@ -7,7 +7,7 @@ div.tooltip {
     position: absolute;			
     text-align: left;			
     padding: 2px;
-    width: 150px;
+    width: 200px;
     font: 12px sans-serif;		
     background: lightsteelblue;	
     border: 0px;		
@@ -120,7 +120,7 @@ async function step2() {
        .attr("opacity", 0.0)
        .attr("cx", function(d) { return x(d["Episode"]); })
        .attr("cy", function(d) { return y(d["Rating"]); })
-       .attr("r", function(d) { return 2; })
+       .attr("r", 2)
        .on("mouseover", function(d) {		
             div.transition()		
                .duration(200)		
@@ -132,8 +132,14 @@ async function step2() {
                     d["Description"])
                .style("left", (d3.event.pageX - 100) + "px")		
                .style("top", (d3.event.pageY - 160) + "px");
-            })					
-        .on("mouseout", function(d) {		
+            })
+       .on("mouseover", function() {
+        d3.select(this).attr("r", 3) 
+        })
+      .on("mouseout", function() {
+        d3.select(this).attr("r", 2) 
+        })
+       .on("mouseout", function(d) {		
             div.transition()		
                 .duration(500)		
                 .style("opacity", 0);	
