@@ -19,6 +19,15 @@ div.tooltip {
 <svg width=1500 height=700>
 </svg>
 <script>   
+    
+   var j = 0;
+   
+   function inc(j){
+       j = j + 1;
+       if (j == 1){
+           step();
+       };
+   };
    
    d3.select('svg').append('text')
      .attr('x', 00)
@@ -41,16 +50,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", step)
-    
-d3.select('svg').append('rect')
-     .attr('x', 400)
-     .attr('y', 100)
-     .attr('width', 100)
-     .attr('height', 50)
-     .attr('stroke', 'black')
-     .attr('fill', 'red')
-     .on("click", step2)
+     .on("click", inc)
     
    d3.select('svg').append('text')
      .attr('x', 300)
@@ -110,11 +110,11 @@ d3.select('svg').append('rect')
                           subject: {
                           radius: 7,         
                           radiusPadding: 7},
-                          color: "lightblue",
+                          color: "blue",
                           x: 11.57024793,
                           y: 223.0769231,
                           dy: 20,
-                          dx: 0}]
+                          dx: 10}]
 
     const makeAnnotations = d3.annotation()
                               .annotations(annotation1)
@@ -151,7 +151,7 @@ async function step2() {
                           x: 57.85123967,
                           y: 195,
                           dy: -45,
-                          dx: 0}]
+                          dx: 22.5}]
 
     const makeAnnotations = d3.annotation()
                               .annotations(annotation2)
