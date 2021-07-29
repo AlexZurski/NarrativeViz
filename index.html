@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
 <style> 
 .dot {fill: lightblue; stroke: black;}
@@ -16,7 +17,6 @@
 <svg width=1500 height=700>
 </svg>
 <script>
-   
    
   async function init() {
      
@@ -53,7 +53,7 @@
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll(".dot").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i <= 1 })
+    //.filter(function(d, i) { return i == 1 })
     .attr("class", "dot")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
