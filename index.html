@@ -76,13 +76,13 @@ div.tooltip {
       .attr('height', 50)
       .attr('stroke', 'black')
       .attr('fill', 'green')
-      .on("click", step1)
+      .on("click", step1);
 
   };
    
   async function step1() {
       
-   d3.select('rect').html = ""
+   d3.select('rect').remove();
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -130,7 +130,7 @@ div.tooltip {
    
 async function step2() {
     
-   d3.select('svg').selectAll('rect').html = ""
+   d3.select('svg').select('rect').remove();
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -178,7 +178,7 @@ async function step2() {
 
   async function full() {
      
-    d3.select('svg').select('rect').html = ""  
+    d3.select('svg').selectAll('rect').remove();  
       
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
       
