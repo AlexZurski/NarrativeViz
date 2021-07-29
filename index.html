@@ -27,6 +27,7 @@ div.tooltip {
        if (j == 1){
            step();
        };
+       console.log(j);
    };
    
    d3.select('svg').append('text')
@@ -51,6 +52,15 @@ div.tooltip {
      .attr('stroke', 'black')
      .attr('fill', 'green')
      .on("click", inc)
+    
+d3.select('svg').append('rect')
+     .attr('x', 400)
+     .attr('y', 100)
+     .attr('width', 100)
+     .attr('height', 50)
+     .attr('stroke', 'black')
+     .attr('fill', 'red')
+     .on("click", inc(j))
     
    d3.select('svg').append('text')
      .attr('x', 300)
