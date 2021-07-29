@@ -133,12 +133,6 @@ async function step2() {
                .style("left", (d3.event.pageX - 100) + "px")		
                .style("top", (d3.event.pageY - 160) + "px");
             })
-       .on("mouseover", function() {
-        d3.select(this).attr("r", 3) 
-        })
-      .on("mouseout", function() {
-        d3.select(this).attr("r", 2) 
-        })
        .on("mouseout", function(d) {		
             div.transition()		
                 .duration(500)		
