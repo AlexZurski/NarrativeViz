@@ -10,7 +10,7 @@
 <button onclick="full()"> See all Episodes
 </button>
 
-<button onclick="step1()"> See Timeline
+<button onclick="step()"> See Timeline
 </button>
 
 <body onload='init()'>
@@ -21,6 +21,8 @@
    
   function init() {
      
+    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv"); 
+     
     const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
      
@@ -29,6 +31,16 @@
   
     const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
     const yaxis = d3.axisLeft(y).tickValues([4, 5, 6, 7, 8, 9, 10]).tickFormat(d3.format("~s"));
+    
+    var line = d3.line()
+    .x(function(d) { return x2(d["Season"]); })
+    .y(function(d) { return y(d["Rating"]); })
+     
+    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
+      .selectAll('path').data(seas).enter().append("path")
+      .datum(seas)
+      .attr("class", "line") 
+      .attr("d", line);
      
     d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 50 + ")");
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
@@ -37,40 +49,22 @@
      
   };
    
-  async function step1() {
+  async function step() {
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
-   
-   var line = d3.line()
-    .x(function(d) { return x2(d["Season"]); })
-    .y(function(d) { return y(d["Rating"]); })
      
-   d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
-    .selectAll('path').data(seas).enter().append("path")
-    .datum(seas)
-    .filter(function(d, i) { return i == 1 })
-    .attr("class", "line") 
-    .attr("d", line);
-     
-    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
-    .selectAll('path').data(seas).enter().append("path")
-    .filter(function(d, i) { return i == 2 })
-    .datum(seas)
-    .attr("class", "line") 
-    .attr("d", line); 
-    
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll(".dot").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i == 1 })
+    .filter(function(d, i) { return i <= 1 })
     .attr("class", "dot")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
-    .attr("r", 5)
+    .attr("r", 2)
   }
-   
+
   async function full() {
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
      
@@ -81,7 +75,7 @@
        .selectAll('circle').data(epis).enter().append('circle')
        .attr("cx", function(d) { return x(d["Episode"]); })
        .attr("cy", function(d) { return y(d["Rating"]); })
-       .attr("r", function(d) { return 2; });
+       .attr("r", function(d) { return 5; });
   }
    
  </script>
