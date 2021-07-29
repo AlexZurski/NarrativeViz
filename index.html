@@ -21,20 +21,34 @@ div.tooltip {
 <script>   
    
    d3.select('svg').append('text')
+     .attr('x', 00)
+     .attr('y', 19)
+     .attr('stroke', 'green')
+     .style("font-size", 30)
+     .text("The Rise and Fall of The Simpsons")
+    
+    d3.select('svg').append('text')
       .attr('x', 00)
-      .attr('y', 19)
-      .attr('stroke', 'green')
+      .attr('y', 30)
+      .attr('stroke', 'black')
       .style("font-size", 19)
-      .text("The Rise and Fall of The Simpsons")
+      .text("The Simpsons was a good show but now it is bad. Here's how it happened.")
    
    d3.select('svg').append('rect')
-     .attr('x', 10)
+     .attr('x', 300)
      .attr('y', 100)
-     .attr('width', 50)
+     .attr('width', 100)
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
      .on("click", full)
+    
+   d3.select('svg').append('text')
+     .attr('x', 300)
+     .attr('y', 100)
+     .attr('stroke', 'black')
+     .style("font-size", 19)
+     .text("Begin")
  
   async function init() {
      
