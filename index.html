@@ -15,7 +15,8 @@
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", step)   
+     .on("click", full)
+ 
    
   async function init() {
      
@@ -96,7 +97,13 @@ async function step2() {
        .attr("opacity", 0.0)
        .attr("cx", function(d) { return x(d["Episode"]); })
        .attr("cy", function(d) { return y(d["Rating"]); })
-       .attr("r", function(d) { return 2; });
+       .attr("r", function(d) { return 2; })
+       .on("mouseover", function(){
+            d3.select(this)
+              .attr("r", 10);})
+       .on("mouseout", function(){
+            d3.select(this)
+              .attr("r", 2);});
      
     d3.select('svg').selectAll('circle')
        .transition()
