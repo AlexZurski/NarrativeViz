@@ -80,7 +80,7 @@
     d3.select('svg').selectAll('circle')
        .transition()
        .delay(function(d,i) { return (i*14); })
-       .duration(50)
+       .duration(1)
        .attr("opacity", 1.0);
     
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis);
