@@ -41,7 +41,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", full)
+     .on("click", step1)
     
 d3.select('svg').append('rect')
      .attr('x', 400)
@@ -51,6 +51,15 @@ d3.select('svg').append('rect')
      .attr('stroke', 'black')
      .attr('fill', 'red')
      .on("click", step2)
+    
+d3.select('svg').append('rect')
+     .attr('x', 500)
+     .attr('y', 100)
+     .attr('width', 100)
+     .attr('height', 50)
+     .attr('stroke', 'black')
+     .attr('fill', 'blue')
+     .on("click", full)
     
    d3.select('svg').append('text')
      .attr('x', 300)
@@ -158,13 +167,12 @@ async function step2() {
 
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
-    
-    d3.select('svg').selectAll('annotations')
-      .attr('color', "lightblue")
    
   }
 
   async function full() {
+      
+    svg.selectAll("*").remove();
      
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
       
