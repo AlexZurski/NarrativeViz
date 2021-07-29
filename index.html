@@ -82,7 +82,7 @@ div.tooltip {
    
   async function step1() {
       
-   d3.select('svg").selectAll('rect').remove();
+   d3.select('svg').selectAll('rect').remove();
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -130,7 +130,7 @@ div.tooltip {
    
 async function step2() {
     
-   d3.select('svg").selectAll('rect').remove();
+   d3.select('svg').selectAll('rect').remove();
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -178,7 +178,7 @@ async function step2() {
 
   async function full() {
      
-    d3.select('svg").selectAll('rect').remove(); 
+    d3.select('svg').selectAll('rect').remove(); 
       
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
       
