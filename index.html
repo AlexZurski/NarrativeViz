@@ -33,35 +33,9 @@ div.tooltip {
       .attr('stroke', 'black')
       .style("font-size", 19)
       .text("The Simpsons was a good show but now it is bad. Here's how it happened.")
-   
-   d3.select('svg').append('rect')
-     .attr('x', 300)
-     .attr('y', 100)
-     .attr('width', 100)
-     .attr('height', 50)
-     .attr('stroke', 'black')
-     .attr('fill', 'green')
-     .on("click", step1)
-    
-d3.select('svg').append('rect')
-     .attr('x', 400)
-     .attr('y', 100)
-     .attr('width', 100)
-     .attr('height', 50)
-     .attr('stroke', 'black')
-     .attr('fill', 'red')
-     .on("click", step2)
-    
-d3.select('svg').append('rect')
-     .attr('x', 500)
-     .attr('y', 100)
-     .attr('width', 100)
-     .attr('height', 50)
-     .attr('stroke', 'black')
-     .attr('fill', 'blue')
-     .on("click", full)
     
    d3.select('svg').append('text')
+     .attr
      .attr('x', 300)
      .attr('y', 169)
      .attr('stroke', 'black')
@@ -93,10 +67,22 @@ d3.select('svg').append('rect')
     d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 75 + ")");
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis2);
+      
+      
+    d3.select('svg').append('rect')
+      .attr('x', 300)
+      .attr('y', 100)
+      .attr('width', 100)
+      .attr('height', 50)
+      .attr('stroke', 'black')
+      .attr('fill', 'green')
+      .on("click", step1)
 
   };
    
   async function step1() {
+      
+   d3.select('svg').selectAll('rectangle').remove()
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -131,9 +117,20 @@ d3.select('svg').append('rect')
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
       
+  d3.select('svg').append('rect')
+     .attr('x', 400)
+     .attr('y', 100)
+     .attr('width', 100)
+     .attr('height', 50)
+     .attr('stroke', 'black')
+     .attr('fill', 'red')
+     .on("click", step2)
+      
   }
    
 async function step2() {
+    
+   d3.select('svg').selectAll('rectangle').remove()
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -167,13 +164,19 @@ async function step2() {
 
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
+    
+   d3.select('svg').append('rect')
+     .attr('x', 500)
+     .attr('y', 100)
+     .attr('width', 100)
+     .attr('height', 50)
+     .attr('stroke', 'black')
+     .attr('fill', 'blue')
+     .on("click", full)
    
   }
 
   async function full() {
-      
-    d3.select('svg').selectAll("annotations")
-      .attr("color", "lightblue");
      
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
       
@@ -216,7 +219,7 @@ async function step2() {
        .transition()
        .delay(function(d,i) { return (i*15); })
        .duration(1)
-       .attr("opacity", .75);
+       .attr("opacity", 1);
     
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis);
   }
