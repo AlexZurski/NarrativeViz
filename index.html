@@ -2,17 +2,19 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
-<button onclick="full()"> See all Episodes
-</button>
 
-<button onclick="step2()"> S2
-</button>
 
 
 <body onload='init()'>
    <h1> The Rise and Fall of The Simpsons </h1>
    
    <button onclick="step()"> Start
+   </button>
+   
+   <button onclick="full()"> See all Episodes
+   </button>
+
+   <button onclick="step2()"> S2
    </button>
    
 <svg width=1500 height=700>
@@ -26,7 +28,7 @@
     const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
     const xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
   
-    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+    const y = d3.scaleLinear().domain([4, 9]).range([600, 0]);
     const yaxis = d3.axisLeft(y).tickValues([4, 5, 6, 7, 8, 9, 10]).tickFormat(d3.format("~s"));
     
     var line = d3.line()
@@ -52,7 +54,7 @@
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-   const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+   const y = d3.scaleLinear().domain([4, 9]).range([600, 0]);
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
@@ -70,7 +72,7 @@ async function step2() {
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-   const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+   const y = d3.scaleLinear().domain([4, 9]).range([600, 0]);
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
@@ -89,7 +91,7 @@ async function step2() {
      
     const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
-    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
+    const y = d3.scaleLinear().domain([4, 9]).range([600, 0]);
      
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
