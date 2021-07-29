@@ -101,7 +101,7 @@ div.tooltip {
     .attr("r", 5)
      
   d3.select('svg').selectAll('circle')
-       .filter(function(){ return (d3.select(this).attr("id") == "set1"); }
+       .filter(function(){ return (d3.select(this).attr("id") == "set1");})
        .transition()
        .delay(function(d,i) { return (i*15); })
        .duration(1)
