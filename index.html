@@ -41,7 +41,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", step1)
+     .on("click", fill)
     
 d3.select('svg').append('rect')
      .attr('x', 400)
@@ -159,7 +159,7 @@ async function step2() {
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
     
-    d3.select('svg').selectAll('annotation')
+    d3.select('svg').selectAll('annotations')
       .attr('color', "lightblue")
    
   }
