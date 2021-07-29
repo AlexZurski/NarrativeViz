@@ -41,7 +41,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", inc)
+     .on("click", step)
     
 d3.select('svg').append('rect')
      .attr('x', 400)
@@ -50,7 +50,7 @@ d3.select('svg').append('rect')
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'red')
-     .on("click", inc(j))
+     .on("click", step1)
     
    d3.select('svg').append('text')
      .attr('x', 300)
