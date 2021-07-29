@@ -2,7 +2,6 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 
 <style> 
-.circle {fill: lightblue; stroke: black; opacity: 0.0;}
 .dot {fill: lightblue; stroke: black;}
 .line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </style>
@@ -71,7 +70,9 @@
      
     d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
        .selectAll('circle').data(epis).enter().append('circle')
-       .attr("class", "circle")
+       .attr("fill", "lightblue")
+       .attr("stroke", "black")
+       .attr("opacity", 0.0)
        .attr("cx", function(d) { return x(d["Episode"]); })
        .attr("cy", function(d) { return y(d["Rating"]); })
        .attr("r", function(d) { return 2; });
