@@ -2,7 +2,7 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 
 <style> 
-.circle {fill: none; stroke: none;}
+.circle {fill: lightblue; stroke: black; opacity: 0.0;}
 .dot {fill: lightblue; stroke: black;}
 .line {fill: none; stroke: steelblue; stroke-width: 2px;}
 </style>
@@ -79,7 +79,7 @@
        .transition()
        .delay(function(d,i) { return (i*3); })
        .duration(2000)
-       .attr("stroke", "black");
+       .attr("opacity", 1.0);
     
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis);
   }
