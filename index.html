@@ -43,6 +43,15 @@ div.tooltip {
      .attr('fill', 'green')
      .on("click", step)
     
+d3.select('svg').append('rect')
+     .attr('x', 400)
+     .attr('y', 100)
+     .attr('width', 100)
+     .attr('height', 50)
+     .attr('stroke', 'black')
+     .attr('fill', 'red')
+     .on("click", step2)
+    
    d3.select('svg').append('text')
      .attr('x', 300)
      .attr('y', 169)
@@ -102,16 +111,15 @@ div.tooltip {
                           radius: 7,         
                           radiusPadding: 7},
                           color: "lightblue",
-                          x: 11.57024793 + 50,
-                          y: 223.0769231 + 75,
+                          x: 11.57024793,
+                          y: 223.0769231,
                           dy: 20,
                           dx: 20}]
 
     const makeAnnotations = d3.annotation()
                               .annotations(annotation1)
 
-    d3.select("svg")
-      .append("g")
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
       
   }
@@ -131,6 +139,25 @@ async function step2() {
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
     .attr("r", 5)
+    
+  const annotation1 = [{ note: {
+                          label: "The Simpsons debut on the Fox network",
+                          title: "Season 1"},
+                          type: d3.annotationCalloutCircle,
+                          subject: {
+                          radius: 7,         
+                          radiusPadding: 7},
+                          color: "lightblue",
+                          x: 57.85123967,
+                          y: 195,
+                          dy: -30,
+                          dx: 20}]
+
+    const makeAnnotations = d3.annotation()
+                              .annotations(annotation1)
+
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
+      .call(makeAnnotations)
    
   }
 
