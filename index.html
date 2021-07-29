@@ -41,7 +41,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", step)
+     .on("click", step1)
     
 d3.select('svg').append('rect')
      .attr('x', 400)
@@ -50,7 +50,7 @@ d3.select('svg').append('rect')
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'red')
-     .on("click", step1)
+     .on("click", step2)
     
    d3.select('svg').append('text')
      .attr('x', 300)
@@ -87,7 +87,7 @@ d3.select('svg').append('rect')
 
   };
    
-  async function step() {
+  async function step1() {
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -114,7 +114,7 @@ d3.select('svg').append('rect')
                           x: 11.57024793,
                           y: 223.0769231,
                           dy: 20,
-                          dx: 10}]
+                          dx: 0}]
 
     const makeAnnotations = d3.annotation()
                               .annotations(annotation1)
