@@ -49,6 +49,32 @@ div.tooltip {
      .attr('stroke', 'black')
      .style("font-size", 19)
      .text("Begin")
+    
+ const annotations = [
+              {
+                note: {
+                  label: "A more than 30-fold increase (from ~130 to ~4300 cases)!",
+                  title: "October 2020"
+                },
+                type: d3.annotationCalloutCircle,
+                subject: {
+                  radius: 20,         
+                  radiusPadding: 20  
+                },
+                color: ["#f9b2b2"],
+                x: 562,
+                y: 100,
+                dy: 100,
+                dx: 100
+              }
+            ]
+
+            const makeAnnotations = d3.annotation()
+              .annotations(annotations)
+
+            d3.select("svg")
+              .append("g")
+              .call(makeAnnotations)
  
   async function init() {
      
