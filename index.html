@@ -11,25 +11,9 @@
 <button onclick="step2()"> S2
 </button>
 
-<button onclick="step3()"> S3
-</button>
-
-<button onclick="step4()"> S4
-</button>
-
-<button onclick="step5()"> S5
-</button>
-
-<button onclick="step6()"> S6
-</button>
-
-<button onclick="step7()"> S7
-</button>
-
-<button onclick="step8()"> S8
-</button>
 
 <body onload='init()'>
+   <h1> The Rise and Fall of The Simpsons </h1>
 <svg width=1500 height=700>
 </svg>
 <script>
@@ -90,7 +74,6 @@ async function step2() {
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
     .filter(function(d, i) { return i == 1 })
-    .attr("class", ".dot")
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
