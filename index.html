@@ -104,7 +104,7 @@ d3.select('svg').append('rect')
     .attr("r", 5)
   
     const annotation1 = [{ note: {
-                          label: "The Simpsons debut on the Fox network",
+                          label: "The Simpsons debuts on the Fox network",
                           title: "Season 1"},
                           type: d3.annotationCalloutCircle,
                           subject: {
@@ -141,23 +141,26 @@ async function step2() {
     .attr("r", 5)
     
   const annotation2 = [{ note: {
-                          label: "Bart Simpson appears on the cover of Time",
+                          label: "Bart Simpson appears on the cover of TIME",
                           title: "Season 2"},
                           type: d3.annotationCalloutCircle,
                           subject: {
                           radius: 7,         
                           radiusPadding: 7},
-                          color: "lightblue",
+                          color: "blue",
                           x: 57.85123967,
                           y: 195,
                           dy: -45,
-                          dx: 22.5}]
+                          dx: 0}]
 
     const makeAnnotations = d3.annotation()
                               .annotations(annotation2)
 
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
       .call(makeAnnotations)
+    
+    d3.select('svg').selectAll('annotation')
+      .attr('opacity', 0.5)
    
   }
 
