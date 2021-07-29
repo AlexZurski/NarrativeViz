@@ -104,6 +104,10 @@ async function step2() {
   async function full() {
      
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+      
+    var div = d3.select("body").append("div")	
+                .attr("class", "tooltip")				
+                .style("opacity", 0);
      
     const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
     const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
