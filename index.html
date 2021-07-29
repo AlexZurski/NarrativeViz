@@ -35,7 +35,6 @@ div.tooltip {
       .text("The Simpsons was a good show but now it is bad. Here's how it happened.")
     
    d3.select('svg').append('text')
-     .attr
      .attr('x', 300)
      .attr('y', 169)
      .attr('stroke', 'black')
@@ -83,8 +82,7 @@ div.tooltip {
    
   async function step1() {
       
-   //d3.select('svg').selectAll('rect').remove();
-      d3.select("#the_SVG_ID").remove();
+   d3.select("#the_SVG_ID").remove();
      
    const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
      
@@ -94,11 +92,20 @@ div.tooltip {
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
     //.filter(function(d, i) { return i == 0 })
+    .attr("id", "set1")
+    .attr("opacity", .25)
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
     .attr("r", 5)
+     
+  d3.select('svg').selectAll('circle')
+       .filter(function(){ return (d3.select(this).attr("id") == "set1"); }
+       .transition()
+       .delay(function(d,i) { return (i*15); })
+       .duration(1)
+       .attr("opacity", 1);
   
     const annotation1 = [{ note: {
                           label: "The Simpsons debuts on the Fox network",
