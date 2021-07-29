@@ -15,17 +15,7 @@
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", step2)
-   
-   d3.select('svg').append('rect')
-     .attr('x', 60)
-     .attr('y', 60)
-     .attr('width', 50)
-     .attr('height', 50)
-     .attr('stroke', 'black')
-     .attr('fill', 'red')
-     .on("click", step2())
-   
+     .on("click", step)   
    
   async function init() {
      
@@ -53,7 +43,6 @@
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis2);
      
-    step()
   };
    
   async function step() {
