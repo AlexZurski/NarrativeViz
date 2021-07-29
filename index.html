@@ -125,9 +125,13 @@ async function step2() {
             div.transition()		
                .duration(200)		
                .style("opacity", .9);		
-            div.html(d["Episode"] + "<br/>"  + d["Rating"])	
-               .style("left", (d3.event.pageX) + "px")		
-               .style("top", (d3.event.pageY - 28) + "px");	
+            div.html("Season: " + d["Season"] + "<br/>" + 
+                    "Episode: " + d["Episode"] + "<br/>" +
+                    "Title: " + d["Title"] + "<br/>" +
+                    "Rating: " + d["Rating"] + "<br/>" +
+                    d["Description"])	
+               .style("middle", (d3.event.pageX) + "px")		
+               .style("bottom", (d3.event.pageY) + "px");	
             })					
         .on("mouseout", function(d) {		
             div.transition()		
