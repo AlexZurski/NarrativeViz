@@ -41,7 +41,7 @@ div.tooltip {
      .attr('height', 50)
      .attr('stroke', 'black')
      .attr('fill', 'green')
-     .on("click", full)
+     .on("click", step)
     
    d3.select('svg').append('text')
      .attr('x', 300)
@@ -49,26 +49,6 @@ div.tooltip {
      .attr('stroke', 'black')
      .style("font-size", 19)
      .text("Begin")
-    
-   const annotations = [{ note: {
-                          label: "A more than 30-fold increase (from ~130 to ~4300 cases)!",
-                          title: "October 2020"},
-                          type: d3.annotationCalloutCircle,
-                          subject: {
-                          radius: 20,         
-                          radiusPadding: 20},
-                          color: ["#f9b2b2"],
-                          x: 562,
-                          y: 100,
-                          dy: 100,
-                          dx: 100}]
-
-       const makeAnnotations = d3.annotation()
-              .annotations(annotations)
-
-       d3.select("svg")
-         .append("g")
-         .call(makeAnnotations)
  
   async function init() {
      
@@ -95,7 +75,7 @@ div.tooltip {
     d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 75 + ")");
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis2);
-     
+
   };
    
   async function step() {
@@ -107,12 +87,32 @@ div.tooltip {
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i == 0 })
+    //.filter(function(d, i) { return i == 0 })
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
     .attr("r", 5)
+  
+    const annotation1 = [{ note: {
+                          label: "The Simpsons debut on the Fox network",
+                          title: "Season 1"},
+                          type: d3.annotationCalloutCircle,
+                          subject: {
+                          radius: 20,         
+                          radiusPadding: 20},
+                          color: "lightblue",
+                          x: 562,
+                          y: 100,
+                          dy: 100,
+                          dx: 100}]
+
+    const makeAnnotations = d3.annotation()
+                              .annotations(annotation1)
+
+    d3.select("svg")
+      .append("g")
+      .call(makeAnnotations)
       
   }
    
