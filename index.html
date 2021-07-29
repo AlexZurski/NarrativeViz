@@ -72,8 +72,9 @@
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
-    .selectAll(".dot").data(seas).enter().append("dot")
+    .selectAll(".dot").data(seas).enter().append("circle")
     .filter(function(d, i) { return i == 0 })
+    .attr("class", ".dot")
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("opacity", 0.0)
@@ -81,7 +82,7 @@
     .attr("cy", function(d) { return y(d["Rating"]) })
     .attr("r", 5)
      
-   d3.select('svg').selectAll('dot')
+   d3.select('svg').selectAll('.dot')
     .filter(function(d, i) { return i == 0 })
     .transition()
     .delay(250)
@@ -97,17 +98,17 @@ async function step2() {
    const y = d3.scaleLinear().domain([4, 10]).range([600, 0]);
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
-    .selectAll(".dot").data(seas).enter().append("dot")
+    .selectAll(".dot").data(seas).enter().append("circle")
     .filter(function(d, i) { return i == 1 })
+    .attr("class", ".dot")
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("opacity", 0.0)
-    .attr("class", "dot")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
     .attr("r", 5)
    
-   d3.select('svg').selectAll('dot')
+   d3.select('svg').selectAll('.dot')
     .filter(function(d, i) { return i == 1 })
     .transition()
     .delay(function(d,i) { return (i*250); })
