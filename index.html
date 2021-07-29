@@ -131,7 +131,7 @@ async function step2() {
                     "Rating: " + d["Rating"] + "<br/>" +
                     d["Description"])
                .style("left", (d3.event.pageX - (d3.event.pageX / 1500) * 200) + "px")		
-               .style("top", (d3.event.pageY - 160) + "px");
+               .style("bottom", d3.event.pageY + "px");
             })
        .on("mouseout", function(d) {		
             div.transition()		
