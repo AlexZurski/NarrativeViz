@@ -8,6 +8,19 @@
 </svg>
 <script>
    
+   const annotations = [
+  {
+    note: { label: "Hi" },
+    x: 100,
+    y: 100,
+    dy: 137,
+    dx: 162,
+    subject: { radius: 50, radiusPadding: 10 },
+  },
+];
+
+d3.annotation().annotations(annotations);
+   
   async function init() {
      
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv"); 
@@ -46,7 +59,7 @@
      
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 50 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i == 0 })
+    //.filter(function(d, i) { return i == 0 })
     .attr("fill", "lightblue")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
