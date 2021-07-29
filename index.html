@@ -46,7 +46,7 @@
       .attr("d", line);
      
     d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 150 + ")");
-    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 150 + ")").call(yaxis);
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis2);
      
   };
