@@ -2,11 +2,17 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
-<body onload='init()'>
-   <h1> The Rise and Fall of The Simpsons </h1>   
+<body onload='init()'>  
 <svg width=1500 height=700>
 </svg>
 <script>   
+   
+   d3.select('svg').append('text')
+      .attr('x', 00)
+      .attr('y', 00)
+      .attr('stroke', 'green')
+      .style("font-size", 19)
+      .text("The Rise and Fall of The Simpsons")
    
    d3.select('svg').append('rect')
      .attr('x', 10)
@@ -17,7 +23,6 @@
      .attr('fill', 'green')
      .on("click", full)
  
-   
   async function init() {
      
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv"); 
