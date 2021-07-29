@@ -119,7 +119,7 @@ d3.select('svg').append('rect')
                           subject: {
                           radius: 7,         
                           radiusPadding: 7},
-                          color: "blue",
+                          color: "black",
                           x: 11.57024793,
                           y: 223.0769231,
                           dy: 20,
@@ -156,7 +156,7 @@ async function step2() {
                           subject: {
                           radius: 7,         
                           radiusPadding: 7},
-                          color: "blue",
+                          color: "black",
                           x: 57.85123967,
                           y: 195,
                           dy: -45,
@@ -216,7 +216,7 @@ async function step2() {
        .transition()
        .delay(function(d,i) { return (i*15); })
        .duration(1)
-       .attr("opacity", 1.0);
+       .attr("opacity", .9);
     
     d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis);
   }
