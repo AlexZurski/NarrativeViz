@@ -173,7 +173,7 @@ async function step2() {
   async function full() {
       
     d3.select('svg').selectAll("annotations")
-      .color("lightblue");
+      .attr("color", "lightblue");
      
     const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
       
