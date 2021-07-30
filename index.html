@@ -365,7 +365,7 @@ div.tooltip {
        .attr("opacity", 1);
 
     const annotation = [{ note: {
-                          label: "The Principal and the Pauper invalidates 8 seasons of character development",
+                          label: "Episode 'The Principal and the Pauper' invalidates 8 seasons of character development",
                           title: "Season 9"},
                           type: d3.annotationCalloutCircle,
                           subject: {
@@ -432,7 +432,7 @@ div.tooltip {
        .attr("opacity", 1);
 
     const annotation = [{ note: {
-                          label: "Start of 'Zombie Simpsons'",
+                          label: 'Start of so-called "Zombie Simpsons"',
                           title: "Season 12"},
                           type: d3.annotationCalloutCircle,
                           subject: {
@@ -468,7 +468,6 @@ div.tooltip {
           .style("font-size", 19)
           .text("Next")
 
-  }
   // step7()
   async function step7() {
 
@@ -499,7 +498,7 @@ div.tooltip {
        .attr("opacity", 1);
 
     const annotation = [{ note: {
-                          label: "Lisa goes Gaga achieves lowest ever iMDB rating",
+                          label: "Episode 'Lisa goes Gaga' achieves the series's lowest IMDb rating",
                           title: "Season 23"},
                           type: d3.annotationCalloutCircle,
                           subject: {
@@ -535,11 +534,9 @@ div.tooltip {
           .style("font-size", 19)
           .text("Next")
 
-  }
-
-
+  // step8()
   // line()
-    async function line() {
+  async function line() {
 
     d3.select("#s7_button").remove();
     d3.select("#s7_text").remove();
@@ -580,60 +577,60 @@ div.tooltip {
           .text("Next");
 }
   // full()
-async function full() {
+  async function full() {
 
-  d3.selectAll("g").filter(function(){return (d3.select(this).attr("class") == "annotations");}).remove();
-  d3.select("#line_button").remove();
-  d3.select("#line_text").remove();
+    d3.selectAll("g").filter(function(){return (d3.select(this).attr("class") == "annotations");}).remove();
+    d3.select("#line_button").remove();
+    d3.select("#line_text").remove();
 
-  const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
+    const epis = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonData.csv");
 
-  var div = d3.select("body").append("div")
-               .attr("class", "tooltip");
+    var div = d3.select("body").append("div")
+                 .attr("class", "tooltip");
 
-  const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
-  const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
-  const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
+    const x = d3.scaleLinear().domain([1, 683]).range([0, 1400]);
+    const xaxis = d3.axisBottom(x).tickValues([100, 200, 300, 400, 500, 600]).tickFormat(d3.format("~s"));
+    const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
 
-  d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
-     .selectAll('circle').data(epis).enter().append('circle')
-     .attr("id", "eps")
-     .attr("fill", "lightblue")
-     .attr("stroke", "black")
-     .attr("opacity", 0.0)
-     .attr("cx", function(d) { return x(d["Episode"]); })
-     .attr("cy", function(d) { return y(d["Rating"]); })
-     .attr("r", 2)
-     .on("mouseover", function(d) {
-          div.transition()
-             .duration(200)
-             .style("opacity", .9);
-          div.html("Season: " + d["Season"] + "<br/>" +
-                  "Episode: " + d["Episode"] + "<br/>" +
-                  "Title: " + d["Title"] + "<br/>" +
-                  "Rating: " + d["Rating"] + "<br/>" +
-                  d["Description"])
-             .style("left", (d3.event.pageX - (d3.event.pageX / 1500) * 250) + "px")
-             .style("bottom", (725 - d3.event.pageY) + "px");
-          })
-     .on("mouseout", function(d) {
-          div.transition()
-              .duration(500)
-              .style("opacity", 0);
-      });
+    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
+       .selectAll('circle').data(epis).enter().append('circle')
+       .attr("id", "eps")
+       .attr("fill", "lightblue")
+       .attr("stroke", "black")
+       .attr("opacity", 0.0)
+       .attr("cx", function(d) { return x(d["Episode"]); })
+       .attr("cy", function(d) { return y(d["Rating"]); })
+       .attr("r", 2)
+       .on("mouseover", function(d) {
+            div.transition()
+               .duration(200)
+               .style("opacity", .9);
+            div.html("Season: " + d["Season"] + "<br/>" +
+                    "Episode: " + d["Episode"] + "<br/>" +
+                    "Title: " + d["Title"] + "<br/>" +
+                    "Rating: " + d["Rating"] + "<br/>" +
+                    d["Description"])
+               .style("left", (d3.event.pageX - (d3.event.pageX / 1500) * 250) + "px")
+               .style("bottom", (725 - d3.event.pageY) + "px");
+            })
+       .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
 
-  d3.select('svg').selectAll('circle')
-     .filter(function(){ return (d3.select(this).attr("id") == "eps");})
-     .transition()
-     .delay(function(d,i) { return (i * 15); })
-     .duration(1)
-     .attr("opacity", 1);
+    d3.select('svg').selectAll('circle')
+       .filter(function(){ return (d3.select(this).attr("id") == "eps");})
+       .transition()
+       .delay(function(d,i) { return (i * 15); })
+       .duration(1)
+       .attr("opacity", 1);
 
-  d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis);
-}
-
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 600 + ")").call(xaxis);
+  }
 
 
 
  </script>
  </body>
+
