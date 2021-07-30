@@ -622,7 +622,8 @@ div.tooltip {
                   "Rating: " + d["Rating"] + "<br/>" +
                   d["Description"])
              .style("left", (d3.event.pageX - (d3.event.pageX / 1500) * 250) + "px")
-             .style("bottom", (725 - d3.event.pageY) + "px");
+             .style("bottom", (725 - d3.event.pageY) + "px")
+             .attr("width", "250px");
           })
      .on("mouseout", function(d) {
           div.transition()
