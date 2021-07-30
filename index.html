@@ -91,7 +91,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set1");})
        .transition()
-       .delay(function(d,i) { return (1000); })
+       .delay(function(d,i) { return ((i + 1) * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -159,7 +159,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set2");})
        .transition()
-       .delay(function(d,i) { return (i*1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -226,7 +226,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set3");})
        .transition()
-       .delay(function(d,i) { return ((i-1)*1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -293,7 +293,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set4");})
        .transition()
-       .delay(function(d,i) { return ((i - 3)*1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -360,7 +360,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set5");})
        .transition()
-       .delay(function(d,i) { return ((i-6)*1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -427,7 +427,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set6");})
        .transition()
-       .delay(function(d,i) { return ((i - 8)*1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -494,7 +494,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set7");})
        .transition()
-       .delay(function(d,i) { return ((i - 11) *1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
@@ -562,7 +562,7 @@ div.tooltip {
   d3.select('svg').selectAll('circle')
        .filter(function(){ return (d3.select(this).attr("id") == "set8");})
        .transition()
-       .delay(function(d,i) { return ((i - 22) *1000); })
+       .delay(function(d,i) { return (i  * 1000); })
        .duration(1)
        .attr("opacity", 1);
 
