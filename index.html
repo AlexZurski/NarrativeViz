@@ -26,9 +26,9 @@ div.tooltip {
      .attr('stroke', 'green')
      .style("font-size", 30)
      .text("The Rise and Fall of The Simpsons")
-    .setRotate(180, 100, 100)
+    .attr("transform", "rotate(-65)")
 
-    d3.select('svg').append('text')
+    d3.select('svg').append('text').append("g").attr("transform(", "translate(" + 50 + "," + 75 + ")")
       .attr('x', 00)
       .attr('y', 30)
       .attr('stroke', 'black')
