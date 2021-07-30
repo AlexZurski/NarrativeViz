@@ -482,7 +482,7 @@ div.tooltip {
 
    d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
     .selectAll("circle").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i >= 12 && i <= 22 })
+    .filter(function(d, i) { return i >= 12 })
     .attr("id", "set7")
     .attr("opacity", 0)
     .attr("fill", "lightblue")
@@ -525,7 +525,7 @@ div.tooltip {
         .attr('height', 50)
         .attr('stroke', 'black')
         .attr('fill', 'green')
-        .on("click", step8);
+        .on("click", line);
 
         d3.select('svg').append('text')
           .attr("id","s7_text")
@@ -537,78 +537,12 @@ div.tooltip {
 
   }
 
-  // step8()
-  async function step8() {
-
-   d3.select("#s7_button").remove();
-   d3.select("#s7_text").remove();
-
-   const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
-
-   const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-   const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
-
-   d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
-    .selectAll("circle").data(seas).enter().append("circle")
-    .filter(function(d, i) { return i > 22 })
-    .attr("id", "set8")
-    .attr("opacity", 0)
-    .attr("fill", "lightblue")
-    .attr("stroke", "black")
-    .attr("cx", function(d) { return x2(d["Season"]) })
-    .attr("cy", function(d) { return y(d["Rating"]) })
-    .attr("r", 5)
-
-  d3.select('svg').selectAll('circle')
-       .filter(function(){ return (d3.select(this).attr("id") == "set8");})
-       .transition()
-       .delay(function(d,i) { return (i  * 1000); })
-       .duration(1)
-       .attr("opacity", 1);
-
-    const annotation = [{ note: {
-                          label: "Season 33 is scheduled to air starting late 2021",
-                          title: "Season 31+",
-                          wrap: 150,
-                          align: "right"},
-                          connector: {
-                          end: "arrow"},
-                          x: 1200,
-                          y: 350,
-                          dy: 0,
-                          dx: 0}]
-
-    const makeAnnotations = d3.annotation()
-                              .annotations(annotation)
-
-    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
-      .call(makeAnnotations)
-
-      d3.select('svg').append('rect')
-        .attr("id","s8_button")
-        .attr('x', 300)
-        .attr('y', 100)
-        .attr('width', 100)
-        .attr('height', 50)
-        .attr('stroke', 'black')
-        .attr('fill', 'green')
-        .on("click", line);
-
-        d3.select('svg').append('text')
-          .attr("id","s8_text")
-          .attr('x', 300)
-          .attr('y', 169)
-          .attr('stroke', 'black')
-          .style("font-size", 19)
-          .text("Next")
-
-  }
 
   // line()
     async function line() {
 
-    d3.select("#s8_button").remove();
-    d3.select("#s8_text").remove();
+    d3.select("#s7_button").remove();
+    d3.select("#s7_text").remove();
 
     const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
 
