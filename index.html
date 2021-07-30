@@ -26,9 +26,8 @@ div.tooltip {
      .attr('stroke', 'green')
      .style("font-size", 30)
      .text("The Rise and Fall of The Simpsons")
-    .attr("transform", "rotate(-65)")
 
-    d3.select('svg').append('text').append("g").attr("transform(", "translate(" + 50 + "," + 75 + ")")
+    d3.select('svg').append('text')
       .attr('x', 00)
       .attr('y', 30)
       .attr('stroke', 'black')
@@ -37,35 +36,51 @@ div.tooltip {
 
       async function init() {
 
-          const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-          const xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
+    const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
+    const xaxis2 = d3.axisBottom(x2).tickValues([5, 10, 15, 20, 25, 30]).tickFormat(d3.format("~s"));
 
-          const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
-          const yaxis = d3.axisLeft(y).tickValues([4, 5, 6, 7, 8, 9]).tickFormat(d3.format("~s"));
+    const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
+    const yaxis = d3.axisLeft(y).tickValues([4, 5, 6, 7, 8, 9]).tickFormat(d3.format("~s"));
 
-          d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 75 + ")");
-          d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
-          d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis2);
+    d3.select('svg').append('g').attr("transform", "translate(" + 50 + "," + 75 + ")");
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 50 + ")").call(yaxis);
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 650 + ")").call(xaxis2);
 
-          d3.select('svg').append('rect')
-            .attr("id","start_button")
-            .attr('x', 300)
-            .attr('y', 100)
-            .attr('width', 100)
-            .attr('height', 50)
-            .attr('stroke', 'black')
-            .attr('fill', 'green')
-            .on("click", step1);
+    d3.select('svg').append('rect')
+      .attr("id","start_button")
+      .attr('x', 300)
+      .attr('y', 100)
+      .attr('width', 100)
+      .attr('height', 50)
+      .attr('stroke', 'black')
+      .attr('fill', 'green')
+      .on("click", step1);
 
-            d3.select('svg').append('text')
-              .attr("id","start_text")
-              .attr('x', 300)
-              .attr('y', 169)
-              .attr('stroke', 'black')
-              .style("font-size", 19)
-              .text("Start")
+      d3.select('svg').append('text')
+        .attr("id","start_text")
+        .attr('x', 300)
+        .attr('y', 169)
+        .attr('stroke', 'black')
+        .style("font-size", 19)
+        .text("Start")
 
-        };
+        d3.select('svg').append('text')
+          .attr('x', 721.47)
+          .attr('y', 680)
+          .attr('stroke', 'black')
+          .style("font-size", 20)
+          .text("Season")
+
+          d3.select('svg').append('text')
+  .attr('x', -453.815)
+  .attr('y', 20)
+  .attr('stroke', 'black')
+  .style("font-size", 20)
+  .text("IMDb Rating")
+ .attr("transform", "rotate(-90)")
+
+  };
+
 
         async function step1() {
 
