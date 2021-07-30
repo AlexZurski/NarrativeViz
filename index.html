@@ -690,7 +690,7 @@ div.tooltip {
    
   d3.select('svg').selectAll('circle')
      .transition()
-     .delay(function(d,i) { return (i*15); })
+     .delay(function(d,i) { return ((i - 32) *15); })
      .duration(1)
      .attr("opacity", 1);
   
