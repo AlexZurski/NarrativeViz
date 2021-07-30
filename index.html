@@ -152,7 +152,7 @@ div.tooltip {
 
           async function step2() {
 
-             d3.select("#s1_button").remove();
+             d3.selectAll("#s1_button").remove();
              d3.select("#s1_text").remove();
 
              const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
