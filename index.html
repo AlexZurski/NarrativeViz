@@ -468,70 +468,70 @@ div.tooltip {
                     }
                     async function step7() {
 
-                       d3.select("#s6_button").remove();
-                       d3.select("#s6_text").remove();
+   d3.select("#s6_button").remove();
+   d3.select("#s6_text").remove();
 
-                       const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
+   const seas = await d3.csv("https://raw.githubusercontent.com/AlexZurski/NarrativeViz/main/SimpsonAverage.csv");
 
-                       const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
-                       const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
+   const x2 = d3.scaleLinear().domain([0.75, 31]).range([0, 1400]);
+   const y = d3.scaleLinear().domain([4, 9]).range([600, 100]);
 
-                       d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
-                        .selectAll("circle").data(seas).enter().append("circle")
-                        .filter(function(d, i) { return i >= 12 })
-                        .attr("id", "set7")
-                        .attr("opacity", 0)
-                        .attr("fill", "lightblue")
-                        .attr("stroke", "black")
-                        .attr("cx", function(d) { return x2(d["Season"]) })
-                        .attr("cy", function(d) { return y(d["Rating"]) })
-                        .attr("r", 5)
+   d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
+    .selectAll("circle").data(seas).enter().append("circle")
+    .filter(function(d, i) { return i >= 12 })
+    .attr("id", "set7")
+    .attr("opacity", 0)
+    .attr("fill", "lightblue")
+    .attr("stroke", "black")
+    .attr("cx", function(d) { return x2(d["Season"]) })
+    .attr("cy", function(d) { return y(d["Rating"]) })
+    .attr("r", 5)
 
-                      d3.select('svg').selectAll('circle')
-                           .filter(function(){ return (d3.select(this).attr("id") == "set7");})
-                           .transition()
-                           .delay(function(d,i) { return (i  * 1000); })
-                           .duration(1)
-                           .attr("opacity", 1);
+  d3.select('svg').selectAll('circle')
+       .filter(function(){ return (d3.select(this).attr("id") == "set7");})
+       .transition()
+       .delay(function(d,i) { return (i  * 250); })
+       .duration(1)
+       .attr("opacity", 1);
 
-                        const annotation = [{ note: {
-                                              label: "Episode 'Lisa goes Gaga' achieves the series's lowest IMDb rating",
-                                              title: "Season 23"},
-                                              type: d3.annotationCalloutCircle,
-                                              subject: {
-                                              radius: 7,
-                                              radiusPadding: 7},
-                                              color: "black",
-                                              x: 1029.752066,
-                                              y: 334.0909091,
-                                              dy: 20,
-                                              dx: 0}]
+    const annotation = [{ note: {
+                          label: "Episode 'Lisa goes Gaga' achieves the show's lowest IMDb rating",
+                          title: "Season 23"},
+                          type: d3.annotationCalloutCircle,
+                          subject: {
+                          radius: 7,
+                          radiusPadding: 7},
+                          color: "black",
+                          x: 1029.752066,
+                          y: 334.0909091,
+                          dy: 20,
+                          dx: 0}]
 
-                        const makeAnnotations = d3.annotation()
-                                                  .annotations(annotation)
+    const makeAnnotations = d3.annotation()
+                              .annotations(annotation)
 
-                        d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
-                          .call(makeAnnotations)
+    d3.select("svg").append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
+      .call(makeAnnotations)
 
-                          d3.select('svg').append('rect')
-                            .attr("id","s7_button")
-                            .attr('x', 1080)
-                            .attr('y', 340)
-                            .attr('width', 50)
-                            .attr('height', 50)
-                            .attr('stroke', 'black')
-                            .attr('fill', 'green')
-                            .on("click", line);
+      d3.select('svg').append('rect')
+        .attr("id","s7_button")
+        .attr('x', 1080)
+        .attr('y', 340)
+        .attr('width', 50)
+        .attr('height', 50)
+        .attr('stroke', 'black')
+        .attr('fill', 'green')
+        .on("click", line);
 
-                            d3.select('svg').append('text')
-                              .attr("id","s7_text")
-                              .attr('x', 1085)
-                              .attr('y', 370)
-                              .attr('stroke', 'black')
-                              .style("font-size", 20)
-                              .text("Next")
-
-                      }
+        d3.select('svg').append('text')
+          .attr("id","s7_text")
+          .attr('x', 1085)
+          .attr('y', 370)
+          .attr('stroke', 'black')
+          .style("font-size", 20)
+          .text("Next")
+          .on("click", line);
+                    }
                       async function line() {
 
                           d3.select("#s7_button").remove();
