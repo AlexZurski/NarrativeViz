@@ -648,7 +648,8 @@ div.tooltip {
 }
   // full()
     async function full() {
-
+        
+  d3.selectAll("g").filter(function(){return (d3.select(this).attr("class") == "annotations");}).remove();
   d3.select("#line_button").remove();
   d3.select("#line_text").remove();
     
