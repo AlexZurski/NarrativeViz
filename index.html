@@ -612,7 +612,15 @@
                   d["Description"])
              .style("left", (d3.event.pageX - (d3.event.pageX / 1500) * 250) + "px")
              .style("bottom", (725 - d3.event.pageY) + "px")
-             .attr("width", "250px");
+             .attr("width", "250px")
+              .attr("position", "absolute")
+     .attr("text-align", "left")
+     .attr("padding", "2px")
+     .attr("font", "12px sans-serif")
+     .attr("background", "lightsteelblue")
+     .attr("border", "0px")
+     .attr("border-radius", "8px")
+     .attr("pointer-events", "none");
           })
      .on("mouseout", function(d) {
           div.transition()
