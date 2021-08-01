@@ -20,7 +20,7 @@ div.tooltip {
 </svg>
 <script>
 
-d3.select('svg').append('text')
+   d3.select('svg').append('text')
      .attr('x', 00)
      .attr('y', 30)
      .attr('stroke', 'black')
@@ -41,7 +41,6 @@ d3.select('svg').append('text')
         .style("font-size", 15)
         .text("This narrative visualization was inspired by The Fall of The Simpsons: How it Happened by Super Eyepatch Wolf on Youtube. Check it out afterward for more information.")
 
-
 //init()
 async function init() {
 
@@ -58,7 +57,7 @@ async function init() {
     d3.select('svg').append('rect')
       .attr("id","start_button")
       .attr('x', 50)
-      .attr('y', 75)
+      .attr('y', 85)
       .attr('width', 50)
       .attr('height', 50)
       .attr('stroke', 'black')
@@ -68,7 +67,7 @@ async function init() {
       d3.select('svg').append('text')
         .attr("id","start_button")
         .attr('x', 55)
-        .attr('y', 105)
+        .attr('y', 115)
         .attr('stroke', 'black')
         .style("font-size", 20)
         .text("Start")
@@ -107,7 +106,7 @@ async function step1() {
     .filter(function(d, i) { return i == 0 })
     .attr("id", "set1")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -185,7 +184,7 @@ async function step2() {
     .filter(function(d, i) { return i == 1 })
     .attr("id", "set2")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -199,7 +198,7 @@ async function step2() {
        .attr("opacity", 1);
 
     const annotation = [{ note: {
-                          label: "Bart Simpson on the cover of TIME",
+                          label: "Bart Simpson appears on the cover of TIME",
                           title: "Season 2"},
                           type: d3.annotationCalloutCircle,
                           subject: {
@@ -247,7 +246,6 @@ async function step2() {
 
   }
 
-
 //step3()
 async function step3() {
 
@@ -264,7 +262,7 @@ async function step3() {
     .filter(function(d, i) { return i >= 2 && i <= 3})
     .attr("id", "set3")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -341,7 +339,7 @@ async function step4() {
     .filter(function(d, i) { return i >= 4 && i <= 6 })
     .attr("id", "set4")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -419,7 +417,7 @@ async function step5() {
     .filter(function(d, i) { return i >= 7 && i <= 8 })
     .attr("id", "set5")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -497,7 +495,7 @@ async function step6() {
     .filter(function(d, i) { return i >= 9 && i <= 11 })
     .attr("id", "set6")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -575,7 +573,7 @@ async function step7() {
     .filter(function(d, i) { return i >= 12 })
     .attr("id", "set7")
     .attr("opacity", 0)
-    .attr("fill", "lightblue")
+    .attr("fill", "yellow")
     .attr("stroke", "black")
     .attr("cx", function(d) { return x2(d["Season"]) })
     .attr("cy", function(d) { return y(d["Rating"]) })
@@ -689,7 +687,6 @@ async function line() {
                .attr("opacity", 1);
 }
 
-
 //full()
 async function full() {
 
@@ -731,7 +728,7 @@ async function full() {
   d3.select('svg').append("g").attr("transform", "translate(" + 50 + "," + 75 + ")")
      .selectAll('circle').data(epis).enter().append('circle')
      .attr("id", "eps")
-     .attr("fill", "lightblue")
+     .attr("fill", "red")
      .attr("stroke", "black")
      .attr("opacity", 0.0)
      .attr("cx", function(d) { return x(d["Episode"]); })
@@ -740,7 +737,7 @@ async function full() {
      .on("mouseover", function(d) {
           div.transition()
              .duration(200)
-             .style("opacity", .9);
+             .style("opacity", .95);
           div.html("Season: " + d["Season"] + "<br/>" +
                   "Episode: " + d["Episode"] + "<br/>" +
                   "Title: " + d["Title"] + "<br/>" +
@@ -772,6 +769,7 @@ async function full() {
     .style("font-size", 20)
     .text("Hover over episodes and seasons for more details");
 }
+
 
  </script>
  </body>
